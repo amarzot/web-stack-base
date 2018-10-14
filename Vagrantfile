@@ -73,17 +73,17 @@ Vagrant.configure("2") do |config|
     curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    sudo apt-get update
-    sudo apt-get install -y nodejs yarn
+    apt-get update
+    apt-get install -y nodejs yarn
+    echo "bin-links false" >> /home/vagrant/.yarnrc
     cd /vagrant/
     yarn config set bin-links false
-    yarn config list > debug.txt
     yarn install
   SHELL
 
   config.trigger.after :up do |trigger|
     trigger.info = "Starting FS event forwarder..."
     # This is command is interpreted by PowerShell
-    trigger.run = { inline: "start vagrant fsnotify -WindowStyle Minimized -RedirectStandardOutput fsnotify.log"}
+    trigger.run = { inline: "start vagrant fsnotify -WindowStyle Minimized"}
   end
 end
