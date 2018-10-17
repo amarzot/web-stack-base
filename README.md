@@ -11,7 +11,7 @@ This project has only been tested on Windows 10 with an ubuntu vagrant machine w
 
 ## Quick Start
 If you want to get the project up and running as quick as possible follow these steps:
-1. Install vagrant
+1. Install vagrant and virtualbox
 2. Clone the repository
 ```cmd
 C:\Projects> git clone https://github.com/amarzot/web-stack-base.git
